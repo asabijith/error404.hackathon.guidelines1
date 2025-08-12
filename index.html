@@ -1,0 +1,1665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <title>Hackathon 2024 - Developer Guidelines & Resources</title>
+    <style>
+        /* --- Root Variables & Base Styles --- */
+        :root {
+            --slate-900: #0f172a;
+            --slate-800: #1e293b;
+            --slate-700: #334155;
+            --slate-400: #94a3b8;
+            --slate-200: #e2e8f0;
+            --slate-100: #f1f5f9;
+            --slate-50: #f8fafc;
+            --blue-500: #3b82f6;
+            --blue-600: #2563eb;
+            --blue-700: #1d4ed8;
+            --sky-400: #60a5fa;
+            --white: #ffffff;
+            --green-500: #10b981;
+            --red-500: #ef4444;
+            --amber-500: #f59e0b;
+            --violet-500: #8b5cf6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+             font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+            line-height: 1.6;
+            color: var(--slate-700);
+            background-color: var(--slate-50);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* --- Utility Classes --- */
+        .bg-white {
+            background-color: var(--white);
+        }
+        
+        .link-primary {
+            color: var(--blue-500);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .link-primary:hover {
+            text-decoration: underline;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+
+        /* --- Icon Styles --- */
+        .icon {
+            width: 1.25rem;
+            height: 1.25rem;
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 0.5rem;
+        }
+
+        .icon-lg {
+            width: 2.5rem;
+            height: 2.5rem;
+        }
+
+        .icon-xl {
+            width: 3.5rem;
+            height: 3.5rem;
+        }
+
+        /* --- Navigation --- */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 1.5rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+        .logo .icon {
+            color: var(--sky-400);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1rem;
+        }
+
+        .nav-links a {
+            color: var(--slate-200);
+            text-decoration: none;
+            transition: color 0.3s ease, background-color 0.3s ease;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+        }
+
+        .nav-links a:hover {
+            color: var(--white);
+            background: rgba(96, 165, 250, 0.1);
+        }
+
+        .support-btn {
+            background: linear-gradient(135deg, var(--blue-500) 0%, var(--blue-600) 100%);
+            color: white !important;
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            border: none;
+        }
+
+        .support-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.2);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: var(--slate-900);
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: translate(-50%, -50%);
+            opacity: 1.99;
+            z-index: 1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(15, 23, 42, 0.451) 0%, var(--slate-900) 80%);
+            z-index: 2;
+        }
+
+        .hero-content {
+            text-align: center;
+            color: white;
+            z-index: 3;
+            position: relative;
+            max-width: 850px;
+            padding: 0 1.5rem;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 800;
+            letter-spacing: -0.05em;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--sky-400) 0%, var(--white) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            margin-bottom: 2.5rem;
+            color: var(--slate-400);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-cta-group {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn-primary, .btn-ai {
+             background: linear-gradient(135deg, var(--blue-500) 0%, var(--blue-600) 100%);
+             color: white;
+             padding: 0.9rem 2.2rem;
+             border-radius: 50px;
+             text-decoration: none;
+             font-weight: 600;
+             transition: all 0.3s ease;
+             border: none;
+             cursor: pointer;
+        }
+
+        .btn-primary:hover, .btn-ai:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(59, 130, 246, 0.25);
+        }
+        
+        .btn-secondary {
+             background: transparent;
+             color: white;
+             border: 2px solid var(--slate-700);
+             padding: 0.9rem 2.2rem;
+             border-radius: 50px;
+             text-decoration: none;
+             font-weight: 600;
+             transition: all 0.3s ease;
+        }
+        .btn-secondary:hover {
+            background-color: var(--slate-800);
+            border-color: var(--slate-400);
+        }
+
+        /* --- Section Styles --- */
+        .content-section {
+            padding: 6rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2.75rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+            color: var(--slate-800);
+        }
+
+        .section-subtitle {
+            font-size: 1.15rem;
+            color: var(--slate-700);
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* --- Rules Section --- */
+        .rules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .rule-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02), 0 10px 20px rgba(0,0,0,0.05);
+            border: 1px solid var(--slate-100);
+            transition: all 0.3s ease;
+        }
+
+        .rule-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.03), 0 20px 40px rgba(0,0,0,0.08);
+        }
+
+        .rule-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .rule-icon-wrapper {
+            width: 50px;
+            height: 50px;
+            min-width: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1.25rem;
+        }
+        .rule-icon-wrapper .icon {
+            width: 24px;
+            height: 24px;
+            color: white;
+            margin-right: 0;
+        }
+
+        .icon-allowed { background: var(--green-500); }
+        .icon-forbidden { background: var(--red-500); }
+        .icon-submission { background: var(--amber-500); }
+        .icon-judging { background: var(--violet-500); }
+
+        .rule-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--slate-900);
+        }
+
+        .rule-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .rule-list li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--slate-100);
+            display: flex;
+            align-items: center;
+            font-weight: 500;
+        }
+        .rule-list li:last-child { border-bottom: none; }
+        .rule-list .icon { color: var(--green-500); }
+        .forbidden-list .icon { color: var(--red-500); }
+        .rule-list p {
+            font-size: 0.9rem;
+            color: var(--slate-400);
+            margin-top: 0.25rem;
+            font-weight: 400;
+        }
+
+        /* --- Tutorial Section --- */
+        .tutorial-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 3rem;
+            background: var(--slate-100);
+            border-radius: 12px;
+            padding: 0.5rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            border: 1px solid var(--slate-200);
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 1rem;
+            background: none;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--slate-700);
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn.active {
+            background: var(--white);
+            color: var(--blue-500);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+        }
+
+        .tutorial-content { display: none; animation: fadeIn 0.5s ease; }
+        .tutorial-content.active { display: block; }
+        
+        .step-list {
+            counter-reset: step-counter;
+            list-style: none;
+            padding: 0;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .step-list li {
+            counter-increment: step-counter;
+            margin-bottom: 3.5rem;
+            padding-left: 4.5rem;
+            position: relative;
+        }
+        .step-list li:last-of-type {
+            margin-bottom: 0;
+        }
+        
+       
+        
+        .step-list h4 {
+            font-size: 1.25rem;
+            color: var(--slate-800);
+            margin-bottom: 0.5rem;
+        }
+        .step-list p {
+            margin-bottom: 1.5rem;
+            color: var(--slate-700);
+            max-width: 75ch;
+        }
+
+        .command-block {
+            background: var(--slate-800);
+            color: var(--slate-200);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-top: 1rem;
+            position: relative;
+            overflow-x: auto;
+            border: 1px solid var(--slate-700);
+        }
+
+        .command-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .os-tag {
+            background: var(--slate-700);
+            color: var(--white);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .copy-code-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: var(--slate-200);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .copy-code-btn:hover { background: rgba(255, 255, 255, 0.15); }
+        .copy-code-btn .icon { margin-right: 0.25rem; }
+
+        .info-box {
+            background: var(--slate-50);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            border: 1px solid var(--slate-200);
+        }
+        .info-box ol {
+            margin: 0;
+            padding-left: 1.5rem;
+            color: var(--slate-700);
+            list-style-type: decimal;
+        }
+        .info-box ol li {
+             padding-left: 0.5rem;
+             margin: 0.5rem 0;
+        }
+
+        /* --- AI Features Section --- */
+        .ai-form {
+            max-width: 600px;
+            margin: 0 auto 2rem auto;
+            display: flex;
+            gap: 1rem;
+        }
+        .form-input {
+            width: 100%;
+            padding: 0.9rem 1.2rem;
+            border-radius: 50px;
+            border: 1px solid var(--slate-200);
+            font-size: 1rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: var(--blue-500);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+        }
+        .form-textarea {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            border-radius: 12px;
+            border: 1px solid var(--slate-200);
+            font-size: 1rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            min-height: 80px;
+            resize: vertical;
+        }
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--blue-500);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--slate-800);
+        }
+        
+        #idea-results {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .idea-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid var(--slate-100);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02), 0 10px 20px rgba(0,0,0,0.05);
+        }
+        .idea-card h4 {
+            font-size: 1.25rem;
+            color: var(--blue-600);
+            margin-bottom: 0.75rem;
+        }
+        .idea-card p {
+            font-style: italic;
+            color: var(--slate-700);
+            margin-bottom: 1rem;
+        }
+        .idea-card ul {
+            list-style-position: inside;
+            padding-left: 0.5rem;
+        }
+        .idea-card li {
+            margin-bottom: 0.5rem;
+        }
+        #readme-output {
+            background: var(--slate-800);
+            color: var(--slate-200);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-top: 2rem;
+            position: relative;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+
+        /* --- Modal & Loader --- */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(8px);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease;
+        }
+        .modal-container {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+        }
+        .modal-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .modal-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--slate-800);
+        }
+        .modal-close-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--slate-400);
+            transition: color 0.3s ease;
+        }
+        .modal-close-btn:hover {
+            color: var(--slate-800);
+        }
+        .modal-close-btn .icon {
+            width: 1.75rem;
+            height: 1.75rem;
+            margin: 0;
+        }
+
+        .support-contact-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        .support-contact {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: var(--slate-50);
+            padding: 1rem;
+            border-radius: 12px;
+            border: 1px solid var(--slate-100);
+        }
+        .contact-avatar {
+            width: 50px;
+            height: 50px;
+            min-width: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--blue-500) 0%, var(--blue-700) 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+        .contact-details {
+            flex-grow: 1;
+        }
+        .contact-details h4 {
+            font-weight: 600;
+            color: var(--slate-800);
+        }
+        .contact-details p {
+            color: var(--slate-400);
+            font-size: 0.9rem;
+        }
+        .contact-actions a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--green-500);
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        .contact-actions a:hover {
+            background: #059669; /* Darker green */
+        }
+        .contact-actions .icon {
+            width: 1.5rem;
+            height: 1.5rem;
+            margin: 0;
+        }
+
+        .loader-content {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 5px solid var(--slate-200);
+            border-top-color: var(--blue-500);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem auto;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* --- Quick Resources Section --- */
+        .quick-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .quick-link {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02), 0 10px 20px rgba(0,0,0,0.05);
+            border: 1px solid var(--slate-100);
+            text-align: center;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .quick-link:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.03), 0 20px 40px rgba(0,0,0,0.08);
+            color: var(--blue-500);
+        }
+        
+        .quick-link-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--blue-500);
+            transition: color 0.3s ease;
+        }
+        .quick-link-icon .icon {
+            width: 2.5rem;
+            height: 2.5rem;
+        }
+        
+        .quick-link h3 {
+            color: var(--slate-800);
+            margin-bottom: 0.5rem;
+            transition: color 0.3s ease;
+        }
+        .quick-link:hover h3 { color: var(--blue-500); }
+        .quick-link p { color: var(--slate-400); font-size: 0.9rem; }
+
+
+        /* --- Footer --- */
+        .footer {
+            background: var(--slate-900);
+            color: var(--slate-200);
+            padding: 4rem 1.5rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--slate-400);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover { color: var(--sky-400); }
+
+        .footer-divider {
+            border-top: 1px solid var(--slate-700);
+            padding-top: 2rem;
+            margin-top: 2rem;
+        }
+
+        .footer-subtitle {
+             margin-top: 0.5rem;
+             color: var(--slate-400);
+             font-size: 0.9rem;
+        }
+
+        /* --- Mobile Menu --- */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1100; /* Ensure it's above other nav elements */
+        }
+        .mobile-menu-toggle .icon { margin: 0; }
+
+        /* --- Animations & Keyframes --- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 768px) {
+            .mobile-menu-toggle { display: block; }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--slate-900);
+                flex-direction: column;
+                padding: 1rem;
+                border-top: 1px solid rgba(148, 163, 184, 0.1);
+            }
+
+            .nav-links.active { display: flex; }
+            .nav-links li { width: 100%; }
+            .nav-links a, .nav-links .support-btn { 
+                display: block; 
+                padding: 1rem;
+                width: 100%;
+                text-align: left;
+            }
+
+            .hero-title { font-size: 2.8rem; }
+            .hero-subtitle { font-size: 1.1rem; }
+
+            .content-section { padding: 4rem 0; }
+            .section-title { font-size: 2.2rem; }
+            .section-subtitle { font-size: 1rem; }
+            
+            .tutorial-tabs { flex-direction: column; max-width: none; }
+            .tab-btn { margin-bottom: 0.5rem; }
+
+            .step-list li {
+                padding-left: 0;
+                padding-top: 4.5rem;
+                margin-bottom: 4rem;
+            }
+            .step-list li::before {
+                left: 50%;
+                transform: translateX(-50%);
+                top: 0;
+            }
+            .ai-form {
+                flex-direction: column;
+            }
+        }
+        
+         @media (max-width: 480px) {
+            .hero-title { font-size: 2.2rem; }
+            .hero-subtitle { font-size: 1rem; }
+            .hero-cta-group { flex-direction: column; gap: 1rem; align-items: stretch; }
+            .btn-primary, .btn-secondary, .btn-ai { width: 100%; text-align: center; }
+
+            .rules-grid { grid-template-columns: 1fr; }
+            .rule-card { padding: 1.5rem; }
+            .rule-title { font-size: 1.2rem; }
+            
+            .quick-links { grid-template-columns: 1fr; }
+         }
+    </style>
+</head>
+<body>
+    <!-- SVG Icon Definitions -->
+    <svg class="sr-only">
+        <symbol id="icon-rocket" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M15.59 14.37a6 6 0 01-5.84 7.38v.01l-1.42-1.42c-.59-.59-.59-1.54 0-2.12l7.27-7.27c.59-.59 1.54-.59 2.12 0L20 12.01v.01a6 6 0 01-4.41 2.36zM12.01 20a4 4 0 004-4h-4v4zM12 2a4 4 0 00-4 4v2c0 1.1-.9 2-2 2H4a4 4 0 00-4 4v1c0 .55.45 1 1 1h2c1.1 0 2-.9 2-2v-2a4 4 0 004-4h2a4 4 0 004-4V6a4 4 0 00-4-4h-1z"></path>
+        </symbol>
+        <symbol id="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line>
+        </symbol>
+        <symbol id="icon-support" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M12 12v-3"></path><path d="M12 17h.01"></path>
+        </symbol>
+        <symbol id="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+        </symbol>
+        <symbol id="icon-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line>
+        </symbol>
+        <symbol id="icon-upload" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line>
+        </symbol>
+        <symbol id="icon-trophy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"></path>
+        </symbol>
+        <symbol id="icon-clipboard" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+        </symbol>
+        <symbol id="icon-clipboard-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect><path d="m9 14 2 2 4-4"></path>
+        </symbol>
+        <symbol id="icon-github" viewBox="0 0 24 24" fill="currentColor">
+             <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+        </symbol>
+         <symbol id="icon-vercel" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2L2 19.77h20L12 2z"/>
+        </symbol>
+        <symbol id="icon-firebase" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M4.686 21.31l7.01-18.373a.476.476 0 01.896.012l4.28 12.064-12.186 6.297z"></path><path d="M5.584 19.86l8.44-5.32 2.504-7.045-10.944 12.365z"></path><path d="M12.034 3.084L5.58 19.851l8.527-5.45.001-.002 2.37-6.953-4.444-4.362z"></path>
+        </symbol>
+        <symbol id="icon-react" viewBox="0 0 24 24" fill="currentColor">
+             <circle cx="12" cy="12" r="2.5"></circle><ellipse cx="12" cy="12" rx="11" ry="4.2" transform="rotate(60 12 12)"></ellipse><ellipse cx="12" cy="12" rx="11" ry="4.2" transform="rotate(120 12 12)"></ellipse><ellipse cx="12" cy="12" rx="11" ry="4.2"></ellipse>
+        </symbol>
+        <symbol id="icon-code" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline>
+        </symbol>
+        <symbol id="icon-nodejs" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2c-5.523 0-10 4.477-10 10s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zM9.01 15.656c-1.125 0-2.031-.906-2.031-2.031s.906-2.031 2.031-2.031S11.04 12.5 11.04 13.625s-.906 2.031-2.03 2.031zm3.937-2.031c0 1.125.906 2.031 2.031 2.031s2.031-.906 2.031-2.031-.906-2.031-2.031-2.031-2.031.906-2.031 2.031z"/>
+        </symbol>
+        <symbol id="icon-sparkles" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2.25a.75.75 0 0 1 .75.75v3a.75.75 0 0 1-1.5 0V3a.75.75 0 0 1 .75-.75ZM7.5 12a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0Zm12.44-2.44a.75.75 0 0 0-1.06-1.06l-2.12 2.12a.75.75 0 0 0 1.06 1.06l2.12-2.12ZM3.62 11.06a.75.75 0 0 1 1.06-1.06l2.12 2.12a.75.75 0 1 1-1.06 1.06l-2.12-2.12ZM12 18.75a.75.75 0 0 0-.75.75v3a.75.75 0 0 0 1.5 0v-3a.75.75 0 0 0-.75-.75Zm-5.32-2.32a.75.75 0 0 0-1.06 1.06l2.12 2.12a.75.75 0 0 0 1.06-1.06l-2.12-2.12Zm10.64 0a.75.75 0 0 0-1.06-1.06l-2.12 2.12a.75.75 0 0 0 1.06 1.06l2.12-2.12Z"></path>
+        </symbol>
+        <symbol id="icon-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+        </symbol>
+    </svg>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">
+                <svg class="icon icon-lg"><use href="#icon-rocket"></use></svg>
+                <span>Error 404</span>
+            </a>
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                 <svg class="icon icon-lg"><use id="menu-icon" href="#icon-menu"></use></svg>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" onclick="closeMenu()">Home</a></li>
+                <li><a href="#rules" onclick="closeMenu()">Rules</a></li>
+                <li><a href="#ai-lab" onclick="closeMenu()">AI Lab</a></li>
+                <li><a href="#tutorials" onclick="closeMenu()">Tutorials</a></li>
+                <li><a href="#resources" onclick="closeMenu()">Resources</a></li>
+                <li><button class="support-btn" onclick="showSupportModal()">
+                    <svg class="icon"><use href="#icon-support"></use></svg>
+                    Support
+                </button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <video class="hero-video" autoplay muted loop playsinline poster="placeholder.jpg">
+            <source src="https://dl.dropbox.com/scl/fi/4pm0vklrg1sovk7vk6a7x/12826611_640_360_30fps.mp4?rlkey=ccpkclzzl26otejsnn0mvsoyc&st=bhzrnqp4&dl=0" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Error 404 Hackathon <br> Rules & Guidelines </h1>
+            <p class="hero-subtitle">Your central command for rules, tutorials, and resources. Everything you need to build, deploy, and win.</p>
+            
+            <div class="hero-cta-group">
+                <a href="#rules" class="btn-primary">View Rules</a>
+                <a href="#tutorials" class="btn-secondary">Get Started</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rules Section -->
+    <section class="content-section" id="rules">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Rules & Guidelines</h2>
+                <p class="section-subtitle">To ensure a fair, competitive, and fun event for everyone, please adhere to the following rules. Read them carefully.</p>
+            </div>
+            
+            <div class="rules-grid">
+                <!-- Allowed -->
+                <div class="rule-card">
+                    <div class="rule-header">
+                        <div class="rule-icon-wrapper icon-allowed">
+                            <svg class="icon"><use href="#icon-check"></use></svg>
+                        </div>
+                        <h3 class="rule-title">What's Allowed</h3>
+                    </div>
+                    <ul class="rule-list">
+                        <li>
+                            <div>
+                                Frontend Frameworks
+                                <p>React, Vue.js, Svelte, Angular, or plain HTML/CSS/JS.</p>
+                            </div>
+                        </li>
+                         <li>
+                            <div>
+                                Hosting Platforms
+                                <p>Vercel, Netlify, Firebase Hosting, GitHub Pages, Render.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                Backend Services
+                                <p>Node.js, Firebase (Auth, Firestore), Supabase, PocketBase.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                Open-Source Libraries
+                                <p>You may use any open-source libraries (e.g., from npm).</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Forbidden -->
+                <div class="rule-card">
+                    <div class="rule-header">
+                        <div class="rule-icon-wrapper icon-forbidden">
+                             <svg class="icon"><use href="#icon-x"></use></svg>
+                        </div>
+                        <h3 class="rule-title">What's Forbidden</h3>
+                    </div>
+                    <ul class="rule-list forbidden-list">
+                       <li>
+                            <div>
+                                AI Code Generators
+                                <p>Tools like ,GitHub Spark, Co pilot, AI Studio , Firebase Studio , Vercel , Figma , WIX , Lovable are disabled to ensure original work.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                Pre-built Templates
+                                <p>Using existing templates or themes is not permitted.</p>
+                            </div>
+                        </li>
+                         <li>
+                            <div>
+                                Existing Codebases
+                                <p>All code must be written during the hackathon.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                Paid Services
+                                <p>Projects must not require paid plans or credit cards to run.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Submission Requirements -->
+                <div class="rule-card">
+                    <div class="rule-header">
+                        <div class="rule-icon-wrapper icon-submission">
+                             <svg class="icon"><use href="#icon-upload"></use></svg>
+                        </div>
+                        <h3 class="rule-title">Submission Requirements</h3>
+                    </div>
+                    <ul class="rule-list">
+                        <li><svg class="icon"><use href="#icon-check"></use></svg>A publicly accessible, live deployed URL.</li>
+                        <li><svg class="icon"><use href="#icon-check"></use></svg>A public GitHub repository link.</li>
+                        <li><svg class="icon"><use href="#icon-check"></use></svg>A detailed README.md file explaining your project.</li>
+                        <li><svg class="icon"><use href="#icon-check"></use></svg>A short, unlisted YouTube video demo (max 3 mins).</li>
+                    </ul>
+                </div>
+
+                <!-- Judging Criteria -->
+                <div class="rule-card">
+                    <div class="rule-header">
+                        <div class="rule-icon-wrapper icon-judging">
+                            <svg class="icon"><use href="#icon-trophy"></use></svg>
+                        </div>
+                        <h3 class="rule-title">Judging Criteria</h3>
+                    </div>
+                    <ul class="rule-list">
+                         <li>
+                            <div>
+                                Innovation & Creativity (25%)
+                                <p>How original and impactful is the idea?</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                Technical Implementation (25%)
+                                <p>How well-built and functional is the project?</p>
+                            </div>
+                        </li>
+                         <li>
+                            <div>
+                                Design & UX (20%)
+                                <p>Is the interface intuitive and visually appealing?</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                Code Quality & Docs (15%)
+                                <p>Is the code clean, organized, and well-documented?</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                Presentation (15%)
+                                <p>How effectively is the project demoed?</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Idea Lab Section -->
+    <section class="content-section bg-white" id="ai-lab">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">✨ AI Idea Lab</h2>
+                <p class="section-subtitle">Stuck for an idea? Enter a theme or keyword below and let our AI generate some starting points for you.</p>
+            </div>
+            <form class="ai-form" id="idea-form">
+                <input type="text" id="idea-theme" class="form-input" placeholder="e.g., sustainability, education, healthcare...">
+                <button type="submit" class="btn-ai">Generate Ideas</button>
+            </form>
+            <div id="idea-results"></div>
+        </div>
+    </section>
+
+    <!-- Tutorial Section -->
+    <section class="content-section" id="tutorials">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Step-by-Step Guides</h2>
+                <p class="section-subtitle">Follow these tutorials to get your project from zero to deployed.</p>
+            </div>
+            
+            <div class="tutorial-tabs">
+                <button class="tab-btn active" onclick="showTab('github', event)">GitHub Setup</button>
+                <button class="tab-btn" onclick="showTab('react', event)">React App</button>
+                <button class="tab-btn" onclick="showTab('deploy', event)">Deployment</button>
+                <button class="tab-btn" onclick="showTab('readme', event)">✨ README Generator</button>
+            </div>
+
+            <!-- GitHub Tutorial -->
+            <div id="github" class="tutorial-content active">
+                <ol class="step-list">
+                    <li>
+                        <h4>Create a New Repository on GitHub</h4>
+                        <p>Start by creating a new public repository. This will be the home for your project's code.</p>
+                        <div class="command-block">
+                            <code>
+<b>Repository name:</b> your-project-name<br>
+<b>Description:</b> A great description of your project.<br>
+☑️ Public<br>
+☑️ Add a README file<br>
+☑️ Add .gitignore: Node
+                            </code>
+                        </div>
+                    </li>
+                    <li>
+                        <h4>Clone the Repository to Your Machine</h4>
+                        <p>Use the `git clone` command to create a local copy of your new repository.</p>
+                        <div class="command-block">
+                             <button class="copy-code-btn" onclick="copyCode(this)">
+                                <svg class="icon"><use href="#icon-clipboard"></use></svg>Copy
+                            </button>
+                            <code>
+git clone https://github.com/YOUR_USERNAME/your-project-name.git
+cd your-project-name
+                            </code>
+                        </div>
+                    </li>
+                    <li>
+                        <h4>Daily Git Workflow</h4>
+                        <p>Follow this commit cycle regularly to save your progress and keep your repository up-to-date.</p>
+                         <div class="command-block">
+                             <button class="copy-code-btn" onclick="copyCode(this)">
+                                <svg class="icon"><use href="#icon-clipboard"></use></svg>Copy
+                            </button>
+                            <code>
+# Check the status of your changes
+git status
+
+# Add all new and changed files to staging
+git add .
+
+# Commit your changes with a descriptive message
+git commit -m "feat: Implement user authentication"
+
+# Push your commits to GitHub
+git push origin main
+                            </code>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+
+            <!-- React Tutorial -->
+            <div id="react" class="tutorial-content">
+                <ol class="step-list">
+                    <li>
+                        <h4>Install Node.js & npm</h4>
+                        <p>React development requires Node.js. Download the LTS version from <a href="https://nodejs.org/" target="_blank" class="link-primary">nodejs.org</a>.</p>
+                    </li>
+                    <li>
+                        <h4>Create a New React Application</h4>
+                        <p>Use Create React App to quickly scaffold a new project with a modern build setup.</p>
+                        <div class="command-block">
+                            <button class="copy-code-btn" onclick="copyCode(this)">
+                                <svg class="icon"><use href="#icon-clipboard"></use></svg>Copy
+                            </button>
+                            <code>
+npx create-react-app .
+                            </code>
+                        </div>
+                    </li>
+                    <li>
+                        <h4>Essential Development Commands</h4>
+                        <p>These commands will be your best friends during development.</p>
+                        <div class="command-block">
+                             <button class="copy-code-btn" onclick="copyCode(this)">
+                                <svg class="icon"><use href="#icon-clipboard"></use></svg>Copy
+                            </button>
+                            <code>
+# Starts the local development server
+npm start
+
+# Installs a new dependency from npm
+npm install package-name
+
+# Bundles the app for production
+npm run build
+                            </code>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+            
+            <!-- Deployment Tutorial -->
+            <div id="deploy" class="tutorial-content">
+                <ol class="step-list">
+                    <li>
+                        <h4>Deploy to Vercel via GitHub</h4>
+                        <p>The easiest way to deploy is by linking your GitHub account to Vercel for continuous deployment.</p>
+                         <div class="info-box">
+                            <ol>
+                                <li>Visit <a href="https://vercel.com" target="_blank" class="link-primary">vercel.com</a> and sign up with GitHub.</li>
+                                <li>Click "Add New... > Project" and import your GitHub repository.</li>
+                                <li>Vercel will auto-detect that it's a React app. Keep the default settings.</li>
+                                <li>Click "Deploy". Your site will be live in minutes!</li>
+                            </ol>
+                        </div>
+                    </li>
+                    <li>
+                        <h4>Deploy to Firebase Hosting</h4>
+                        <p>Firebase is another excellent option, especially if you're using other Firebase services.</p>
+                         <div class="command-block">
+                             <button class="copy-code-btn" onclick="copyCode(this)">
+                                <svg class="icon"><use href="#icon-clipboard"></use></svg>Copy
+                            </button>
+                            <code>
+# Install Firebase CLI globally
+npm install -g firebase-tools
+
+# Login and initialize hosting
+firebase login
+firebase init hosting
+
+# Build your React project first
+npm run build
+
+# Deploy to Firebase
+firebase deploy
+                            </code>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+
+            <!-- README Generator -->
+            <div id="readme" class="tutorial-content">
+                <div style="max-width: 800px; margin: 0 auto;">
+                    <h4>✨ README.md Generator</h4>
+                    <p>Fill in your project details below, and our AI will generate a professional README file for your repository.</p>
+                    <form id="readme-form" style="margin-top: 2rem;">
+                        <div class="form-group">
+                            <label for="readme-title">Project Title</label>
+                            <input type="text" id="readme-title" class="form-input" placeholder="e.g., EcoTrack - Carbon Footprint Calculator" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="readme-desc">Project Description</label>
+                            <textarea id="readme-desc" class="form-textarea" placeholder="A short, one-sentence description of your project." required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="readme-features">Key Features (comma-separated)</label>
+                            <input type="text" id="readme-features" class="form-input" placeholder="e.g., User Authentication, Real-time Tracking, Data Visualization" required>
+                        </div>
+                        <button type="submit" class="btn-ai" style="width: 100%;">Generate README</button>
+                    </form>
+                    <div id="readme-output-container" style="display: none; margin-top: 2rem;">
+                         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                            <h4 style="margin: 0;">Generated README.md</h4>
+                            <button class="copy-code-btn" onclick="copyCode(this, true)">
+                                <svg class="icon"><use href="#icon-clipboard"></use></svg>Copy
+                            </button>
+                        </div>
+                        <pre id="readme-output"></pre>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section class="content-section" id="resources">
+        <div class="container">
+             <div class="section-header">
+                <h2 class="section-title">Essential Resources</h2>
+                <p class="section-subtitle">A curated list of tools and documentation to help you build faster and better.</p>
+            </div>
+            
+            <div class="quick-links">
+                <a href="https://github.com" target="_blank" class="quick-link">
+                    <div class="quick-link-icon"><svg class="icon icon-xl"><use href="#icon-github"></use></svg></div>
+                    <h3>GitHub</h3>
+                    <p>Version control and code hosting.</p>
+                </a>
+                <a href="https://vercel.com" target="_blank" class="quick-link">
+                    <div class="quick-link-icon"><svg class="icon icon-xl"><use href="#icon-vercel"></use></svg></div>
+                    <h3>Vercel</h3>
+                    <p>Frontend deployment platform.</p>
+                </a>
+                <a href="https://firebase.google.com" target="_blank" class="quick-link">
+                    <div class="quick-link-icon"><svg class="icon icon-xl"><use href="#icon-firebase"></use></svg></div>
+                    <h3>Firebase</h3>
+                    <p>Backend services and hosting.</p>
+                </a>
+                <a href="https://react.dev" target="_blank" class="quick-link">
+                    <div class="quick-link-icon"><svg class="icon icon-xl"><use href="#icon-react"></use></svg></div>
+                    <h3>React Docs</h3>
+                    <p>Official React documentation.</p>
+                </a>
+                <a href="https://tailwindcss.com" target="_blank" class="quick-link">
+                    <div class="quick-link-icon"><svg class="icon icon-xl"><use href="#icon-code"></use></svg></div>
+                    <h3>Tailwind CSS</h3>
+                    <p>A utility-first CSS framework.</p>
+                </a>
+                <a href="https://nodejs.org" target="_blank" class="quick-link">
+                    <div class="quick-link-icon"><svg class="icon icon-xl"><use href="#icon-nodejs"></use></svg></div>
+                    <h3>Node.js</h3>
+                    <p>JavaScript runtime environment.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <a href="#rules">Rules</a>
+                <a href="#tutorials">Tutorials</a>
+                <a href="#resources">Resources</a>
+            </div>
+            <div class="footer-divider">
+                <p>&copy; 2025 ERROR 404 Hackathon . INNOVATE X. All Rights Reserved.</p>
+                <p class="footer-subtitle">
+                    Good luck and happy coding! Remember to build something amazing.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Loading Modal -->
+    <div class="modal-overlay" id="loading-modal">
+        <div class="loader-content">
+            <div class="loader"></div>
+            <p><strong>Generating with AI...</strong></p>
+        </div>
+    </div>
+
+    <!-- Support Modal -->
+    <div class="modal-overlay" id="support-modal">
+        <div class="modal-container">
+            <button class="modal-close-btn" onclick="hideSupportModal()">
+                <svg class="icon"><use href="#icon-x"></use></svg>
+            </button>
+            <div class="modal-header">
+                <h3 class="modal-title">Technical Support</h3>
+                <p class="section-subtitle" style="margin-bottom: 0;">Get help from our expert team!</p>
+            </div>
+            <div class="support-contact-list">
+                <div class="support-contact">
+                    <div class="contact-avatar">TL</div>
+                    <div class="contact-details">
+                        <h4>Abijith A S</h4>
+                        <p>+91 9188461264</p>
+                    </div>
+                    <div class="contact-actions">
+                        <a href="tel:+919188461264">
+                            <svg class="icon"><use href="#icon-phone"></use></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="support-contact">
+                    <div class="contact-avatar">DV</div>
+                    <div class="contact-details">
+                        <h4>Akshay K S</h4>
+                        <p>+91 90749 81121</p>
+                    </div>
+                     <div class="contact-actions">
+                        <a href="tel:+919074981121">
+                            <svg class="icon"><use href="#icon-phone"></use></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="support-contact">
+                    <div class="contact-avatar">EM</div>
+                    <div class="contact-details">
+                        <h4>Krishnajith</h4>
+                        <p>+91 77362 25202</p>
+                    </div>
+                     <div class="contact-actions">
+                        <a href="tel:+917736225202">
+                            <svg class="icon"><use href="#icon-phone"></use></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- Gemini API Integration ---
+        const API_KEY = "AIzaSyCmNful5YL4jLcCcYKf_I2ux1Qt0TUhVAw"; // Leave blank, Canvas will provide it
+
+        async function callGemini(prompt) {
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${API_KEY}`;
+            const payload = {
+                contents: [{ role: "user", parts: [{ text: prompt }] }]
+            };
+
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    throw new Error(`API call failed with status: ${response.status}`);
+                }
+
+                const result = await response.json();
+                if (result.candidates && result.candidates.length > 0) {
+                    return result.candidates[0].content.parts[0].text;
+                }
+                throw new Error("No content generated.");
+            } catch (error) {
+                console.error("Gemini API Error:", error);
+                return `Error: Could not generate content. Please check the console for details.`;
+            }
+        }
+
+        function showLoader() {
+            document.getElementById('loading-modal').style.display = 'flex';
+        }
+
+        function hideLoader() {
+            document.getElementById('loading-modal').style.display = 'none';
+        }
+
+        // --- AI Idea Lab ---
+        document.getElementById('idea-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const theme = document.getElementById('idea-theme').value.trim();
+            if (!theme) return;
+
+            showLoader();
+            const prompt = `Generate three innovative hackathon project ideas based on the theme: "${theme}". For each idea, provide a catchy name, a short, exciting one-sentence description, and a bulleted list of 3-4 key features. Format the entire response as a JSON array of objects, where each object has "name", "description", and "features" (an array of strings) properties.`;
+            
+            try {
+                const responseText = await callGemini(prompt);
+                // Clean the response to be valid JSON
+                const cleanedJson = responseText.replace(/```json|```/g, '').trim();
+                const ideas = JSON.parse(cleanedJson);
+                displayIdeas(ideas);
+            } catch (error) {
+                console.error("Failed to parse ideas:", error);
+                document.getElementById('idea-results').innerHTML = `<p style="color: var(--red-500); text-align: center;">Sorry, there was an error generating ideas. Please try a different theme.</p>`;
+            } finally {
+                hideLoader();
+            }
+        });
+
+        function displayIdeas(ideas) {
+            const resultsContainer = document.getElementById('idea-results');
+            resultsContainer.innerHTML = '';
+            ideas.forEach(idea => {
+                const card = document.createElement('div');
+                card.className = 'idea-card';
+                card.innerHTML = `
+                    <h4>${idea.name}</h4>
+                    <p>${idea.description}</p>
+                    <ul>
+                        ${idea.features.map(f => `<li>${f}</li>`).join('')}
+                    </ul>
+                `;
+                resultsContainer.appendChild(card);
+            });
+        }
+
+        // --- README Generator ---
+        document.getElementById('readme-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const title = document.getElementById('readme-title').value;
+            const description = document.getElementById('readme-desc').value;
+            const features = document.getElementById('readme-features').value;
+
+            showLoader();
+            const prompt = `Generate a complete, well-structured README.md file in Markdown format for a hackathon project.
+            
+            Project Title: ${title}
+            One-Sentence Description: ${description}
+            Key Features: ${features}
+
+            The README should include the following sections:
+            - A main title (H1)
+            - The one-sentence description.
+            - A "Key Features" section with a bulleted list.
+            - A "Technologies Used" section (make educated guesses like React, Node.js, Firebase, etc.).
+            - A "Getting Started" section with basic installation and running instructions.
+            - A "License" section (default to MIT License).
+            
+            Do not include any introductory text before the Markdown content.`;
+
+            const readmeContent = await callGemini(prompt);
+            document.getElementById('readme-output').textContent = readmeContent;
+            document.getElementById('readme-output-container').style.display = 'block';
+            hideLoader();
+        });
+
+
+        // --- General UI Scripts ---
+        const navLinks = document.getElementById('navLinks');
+        const menuIcon = document.getElementById('menu-icon');
+
+        function toggleMobileMenu() {
+            navLinks.classList.toggle('active');
+            updateMenuIcon();
+        }
+
+        function closeMenu() {
+            navLinks.classList.remove('active');
+            updateMenuIcon();
+        }
+
+        function updateMenuIcon() {
+            if (navLinks.classList.contains('active')) {
+                menuIcon.setAttribute('href', '#icon-x');
+            } else {
+                menuIcon.setAttribute('href', '#icon-menu');
+            }
+        }
+
+        function showTab(tabName, event) {
+            document.querySelectorAll('.tutorial-content').forEach(content => content.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(tabName).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+
+        function showSupportModal() {
+            document.getElementById('support-modal').style.display = 'flex';
+        }
+
+        function hideSupportModal() {
+            document.getElementById('support-modal').style.display = 'none';
+        }
+
+        async function copyCode(button, isPreformatted = false) {
+            const codeBlock = isPreformatted ? button.parentElement.nextElementSibling : button.nextElementSibling;
+            const code = codeBlock.innerText;
+            const icon = button.querySelector('use');
+            const originalIconHref = icon.getAttribute('href');
+            
+            try {
+                await navigator.clipboard.writeText(code);
+                button.innerHTML = `<svg class="icon"><use href="#icon-clipboard-check"></use></svg>Copied!`;
+                
+                setTimeout(() => {
+                    button.innerHTML = `<svg class="icon"><use href="${originalIconHref}"></use></svg>Copy`;
+                }, 2000);
+            } catch (err) {
+                console.error('Failed to copy code:', err);
+                button.textContent = 'Failed';
+                setTimeout(() => button.textContent = 'Copy', 2000);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const animatedElements = document.querySelectorAll('.rule-card, .quick-link, .step-list li');
+
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            animatedElements.forEach((el, index) => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = `opacity 0.6s ease-out, transform 0.6s ease-out`;
+                el.style.transitionDelay = `${(index % 4) * 0.1}s`;
+                observer.observe(el);
+            });
+
+            // Close modal when clicking outside
+            const supportModal = document.getElementById('support-modal');
+            supportModal.addEventListener('click', function(event) {
+                if (event.target === supportModal) {
+                    hideSupportModal();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
